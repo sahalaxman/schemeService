@@ -13,7 +13,9 @@ public interface SchemeProcessService {
 
     SchemeProcess readAllSchemeProcessById(Long id);
 
-    List<SchemeProcess> readSchemeProcessBySchemeName(String schemeName);
+    // List<SchemeProcess> readSchemeProcessBySchemeName(String schemeName);
 
     SchemeProcess updateSchemeProcessById(Long id, SchemeProcess schemeProcess);
+
+    List<SchemeProcess> getSchemeProcessById(Long schemeId);
 }

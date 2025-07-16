@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import com.infoservice.schemeService.schemeServices.SchemeEligibilityService;
 
 @RestController
 @RequestMapping("/api/scheme-eligibility")
+@CrossOrigin(origins = "http://localhost:3000")
 public class SchemeEligibilityController {
     
     @Autowired
@@ -37,16 +39,16 @@ public class SchemeEligibilityController {
         List<SchemeEligibility> c = schemeEligibilityService.readAllSchemeEligibility();
         return c;
     }
-
-    @GetMapping("/get-all-scheme-eligibility/{Id}")
-    public SchemeEligibility getSchemeEligibilityById(@PathVariable Long Id){
-        SchemeEligibility s = schemeEligibilityService.readAllSchemeEligibilityById(Id);
+    
+    @GetMapping("/get-eligibility-by-id/{id}")
+    public List<SchemeEligibility> getSchemeEligibilityBySchemeId(@PathVariable Long schemeId) {
+        List<SchemeEligibility> s = schemeEligibilityService.getSchemeEligibilityById(schemeId);
         return s;
     }
-
-    @GetMapping("/get-scheme-eligibility/{schemeName}")
-    public List<SchemeEligibility> getSchemeEligibilityBySchemeName(@PathVariable String schemeName){
-        List<SchemeEligibility> s = schemeEligibilityService.readSchemeEligibilityBySchemeName(schemeName);
+    
+    @GetMapping("/get-scheme-eligibility/{schemeId}")
+    public List<SchemeEligibility> get(@PathVariable Long schemeId){
+        List<SchemeEligibility> s = schemeEligibilityService.getSchemeEligibilityById(schemeId);
         return s;
     }
 

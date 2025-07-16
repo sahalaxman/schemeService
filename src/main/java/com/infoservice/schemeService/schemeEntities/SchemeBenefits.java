@@ -14,22 +14,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "scheme-apply")
-public class SchemeApply {
+@Table(name = "scheme-benefits")
+public class SchemeBenefits {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name ="scheme-name")
-    String schemeName;
+    @Column(name = "scheme-id")
+    Long schemeId;
 
-    @Column(name = "mode")
-    Boolean mode;
-
-    @Column(name = "url")
-    String url;
-
-    @Column(name = "Office_address")
-    String office_address;
-
+    @Column(name = "Benefits")
+    String benefits;
 }

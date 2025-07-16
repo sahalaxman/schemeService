@@ -1,4 +1,4 @@
-package com.infoservice.schemeService.schemeServices.Impl;
+package com.infoservice.schemeService.schemeServices;
 
 import java.util.List;
 
@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.infoservice.schemeService.schemeEntities.SchemeContactPerson;
 
 import com.infoservice.schemeService.schemeRepositories.SchemeContactPersonRepository;
-import com.infoservice.schemeService.schemeServices.SchemeContactPersonService;
 
 @Service
 public class SchemeContactPersonServiceimpl implements SchemeContactPersonService{

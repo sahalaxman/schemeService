@@ -33,32 +33,28 @@ public class SchemeEligibilityServiceimpl implements SchemeEligibilityService{
     }
 
     @Override
-    public SchemeEligibility readAllSchemeEligibilityById(Long id) {
-        return schemeEligibilityRepository.findById(id).orElse(null);
-    }
-
-    @Override
-    public List<SchemeEligibility> readSchemeEligibilityBySchemeName(String schemeName) {
-        List<SchemeEligibility> ss = schemeEligibilityRepository.findBySchemeName(schemeName).orElse(null);
-        System.out.println(ss);
-        return ss;
-    }
-
-   
-
-
-
-    @Override
     public SchemeEligibility updateSchemeEligibilityById(Long id, SchemeEligibility updateEligibility) {
-        SchemeEligibility existingEligibility = readAllSchemeEligibilityById(id);
+        SchemeEligibility existingEligibility = getEligibilityById(id);
 
-        existingEligibility.setSchemeName(updateEligibility.getSchemeName());
-        existingEligibility.setSlNo(updateEligibility.getSlNo());
+        existingEligibility.setSchemeId(updateEligibility.getSchemeId());
         existingEligibility.setEligibility(updateEligibility.getEligibility());
 
         return schemeEligibilityRepository.save(existingEligibility);
 
         // return existingEligibility;
+    }
+
+
+    @Override
+    public List<SchemeEligibility> getSchemeEligibilityById(Long schemeId) {
+        List<SchemeEligibility> data = schemeEligibilityRepository.findBySchemeId(schemeId);
+        return data;
+    }
+
+    @Override
+    public SchemeEligibility getEligibilityById(Long id) {
+        SchemeEligibility data = schemeEligibilityRepository.findById(id).orElse(null);
+        return data;
     }
 
     

@@ -11,12 +11,11 @@ public interface SchemeEligibilityService {
 
     List<SchemeEligibility> readAllSchemeEligibility();
 
-    SchemeEligibility readAllSchemeEligibilityById(Long id);
+    SchemeEligibility getEligibilityById(Long schemeId);
 
-    List<SchemeEligibility> readSchemeEligibilityBySchemeName(String schemeName);
+    List<SchemeEligibility> getSchemeEligibilityById(Long id);
 
     SchemeEligibility updateSchemeEligibilityById(Long id, SchemeEligibility schemeEligibility);
-
     // Object updatedSchemeEligibilityById(Long id, SchemeEligibility schemeEligibility);
 
     // Object updateSchemeEligibilityById(Long id, SchemeEligibility schemeEligibility);

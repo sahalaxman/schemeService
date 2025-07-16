@@ -10,5 +10,4 @@ public interface SchemeDetailsRepository extends JpaRepository<SchemeDetails, Lo
 
     Optional<SchemeDetails> findBySchemeName(String schemeName);
 
-    
 }

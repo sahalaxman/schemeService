@@ -1,7 +1,15 @@
 package com.infoservice.schemeService.schemeEntities;
 
+// import java.time.LocalDate;
+
+
+import com.infoservice.schemeService.schemeEntities.enums.SchemeMode;
+import com.infoservice.schemeService.schemeEntities.enums.SchemeType;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
@@ -25,8 +33,9 @@ public class SchemeDetails {
     @Column(name = "abbr")
     String abbr;
     
+    @Enumerated(EnumType.STRING)
     @Column(name = "type")
-    String type;
+    SchemeType type;
     
     @Column(name = "summary")
     String summary;
@@ -34,7 +43,7 @@ public class SchemeDetails {
     @Column(name = "target-audience")
     String targetAudience;
 
-    @Column(name = "launch-date")
+    @Column(name = "launch-date")    
     String launchDate;
 
     @Column(name = "is-published")
@@ -43,9 +52,13 @@ public class SchemeDetails {
     @Column(name = "is-active")
     Boolean isActive;
 
-    // Boolean isEligibilityAdded;
-    // Boolean isProcessAdded;
-    // Boolean isHowToApplyAdded;
-    // Boolean isContactPersonAdded;
-    
+    @Column(name = "application-url", nullable = false)
+    String applicationUrl;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "mode")
+    SchemeMode mode = SchemeMode.ONLINE;
+
+    @Column(name = "office-address")
+    String officeAddress;
 }

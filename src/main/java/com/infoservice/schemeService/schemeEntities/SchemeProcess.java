@@ -20,8 +20,8 @@ public class SchemeProcess {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(name = "scheme-name")
-    String schemeName;
+    @Column(name = "scheme-Id")
+    Long schemeId;
 
     @Column(name = "stepNo")
     Long stepNo;

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 // import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,15 +21,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/api/scheme-details")
+@CrossOrigin(origins = "http://localhost:3000")
 public class SchemeDetailsController {
 
     @Autowired
     private  SchemeDetailsService schemeDetailsService;
-    
-    @GetMapping("/demo")
-    public String demoController(){
-        return "Hello Controller" + schemeDetailsService.demoService();
-    }
 
     @PostMapping("/create")
     public ResponseEntity<?> createNewScheme(@RequestBody SchemeDetails newSchemeDetails) {
@@ -40,6 +37,7 @@ public class SchemeDetailsController {
         
         
         List<SchemeDetails> s = schemeDetailsService.readAllSchemes();
+        System.out.println("Get all schemes: " + s);
         return s;
     }
 

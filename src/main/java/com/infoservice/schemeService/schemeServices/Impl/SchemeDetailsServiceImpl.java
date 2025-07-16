@@ -1,5 +1,6 @@
 package com.infoservice.schemeService.schemeServices.Impl;
 
+// import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,11 @@ public class SchemeDetailsServiceImpl implements SchemeDetailsService{
    } 
    @Override
    public ResponseEntity<?> createNewScheme(SchemeDetails newSchemeDetails) {
-        if (isSchemeExist(newSchemeDetails.getSchemeName()))  {
-            return ResponseEntity.badRequest().body("Scheme with name " + newSchemeDetails.getSchemeName() + " already exists.");
-        }
+       if (isSchemeExist(newSchemeDetails.getSchemeName())) {
+           return ResponseEntity.badRequest()
+                   .body("Scheme with name " + newSchemeDetails.getSchemeName() + " already exists.");
+       }
+        // newSchemeDetails.setLaunchDate((LocalDate.parse((newSchemeDetails.getLaunchDate().toString()))));
         newSchemeDetails.setIsActive(false);
         newSchemeDetails.setIsPublished(false);
         
@@ -73,7 +76,7 @@ public class SchemeDetailsServiceImpl implements SchemeDetailsService{
 
     
     // private SchemeDetails getById(Long id) {
-    //     // TODO Auto-generated method stub
+    //     /
     //     throw new UnsupportedOperationException("Unimplemented method 'getById'");
     // }
 

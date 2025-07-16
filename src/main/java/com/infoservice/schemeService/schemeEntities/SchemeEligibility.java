@@ -20,14 +20,9 @@ public class SchemeEligibility {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long Id;
 
-    @Column(name = "scheme-name")
-    String schemeName;
-
-    @Column(name = "slNo")
-    Long slNo;
+    @Column(name = "scheme-id")
+    Long schemeId;
 
     @Column(name = "eligibility")
     String eligibility;
-
-    
 }
