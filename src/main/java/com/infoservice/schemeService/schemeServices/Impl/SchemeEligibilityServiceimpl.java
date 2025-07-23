@@ -11,10 +11,11 @@ import com.infoservice.schemeService.schemeRepositories.SchemeEligibilityReposit
 import com.infoservice.schemeService.schemeServices.SchemeEligibilityService;
 
 @Service
-public class SchemeEligibilityServiceimpl implements SchemeEligibilityService{
+public class SchemeEligibilityServiceimpl implements SchemeEligibilityService {
 
     @Autowired
     private SchemeEligibilityRepository schemeEligibilityRepository;
+
     @Override
     public String demoService() {
         return "Hello Seheme Details Service";
@@ -22,28 +23,35 @@ public class SchemeEligibilityServiceimpl implements SchemeEligibilityService{
 
     @Override
     public SchemeEligibility createNewSchemeEligibility(SchemeEligibility newSchemeEligibility) {
-       SchemeEligibility schemeEligibility = schemeEligibilityRepository.save(newSchemeEligibility);
-       return schemeEligibility;
+        SchemeEligibility schemeEligibility = schemeEligibilityRepository.save(newSchemeEligibility);
+        return schemeEligibility;
     }
 
     @Override
     public List<SchemeEligibility> readAllSchemeEligibility() {
         List<SchemeEligibility> schemeEligibilityList = schemeEligibilityRepository.findAll();
-        return schemeEligibilityList; 
+        return schemeEligibilityList;
     }
 
     @Override
     public SchemeEligibility updateSchemeEligibilityById(Long id, SchemeEligibility updateEligibility) {
         SchemeEligibility existingEligibility = getEligibilityById(id);
+        if (existingEligibility == null) {
+            return null;
+        }
 
-        existingEligibility.setSchemeId(updateEligibility.getSchemeId());
-        existingEligibility.setEligibility(updateEligibility.getEligibility());
+        if (updateEligibility.getSchemeId() != null) {
+            existingEligibility.setSchemeId(updateEligibility.getSchemeId());
+        }
+
+        if (updateEligibility.getEligibility() != null) {
+            existingEligibility.setEligibility(updateEligibility.getEligibility());
+        }
 
         return schemeEligibilityRepository.save(existingEligibility);
 
         // return existingEligibility;
     }
-
 
     @Override
     public List<SchemeEligibility> getSchemeEligibilityById(Long schemeId) {
@@ -57,5 +65,4 @@ public class SchemeEligibilityServiceimpl implements SchemeEligibilityService{
         return data;
     }
 
-    
 }

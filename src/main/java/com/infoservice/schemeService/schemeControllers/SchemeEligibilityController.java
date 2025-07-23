@@ -20,17 +20,17 @@ import com.infoservice.schemeService.schemeServices.SchemeEligibilityService;
 @RequestMapping("/api/scheme-eligibility")
 @CrossOrigin(origins = "http://localhost:3000")
 public class SchemeEligibilityController {
-    
+
     @Autowired
     private SchemeEligibilityService schemeEligibilityService;
 
     @GetMapping("/demo")
-    public String demoController(){
+    public String demoController() {
         return "Hello Controller" + schemeEligibilityService.demoService();
     }
 
-    @PostMapping
-    public SchemeEligibility createSchemeEligibility(@RequestBody SchemeEligibility schemeEligibility){
+    @PostMapping("/create")
+    public SchemeEligibility createSchemeEligibility(@RequestBody SchemeEligibility schemeEligibility) {
         return schemeEligibilityService.createNewSchemeEligibility(schemeEligibility);
     }
 
@@ -39,23 +39,23 @@ public class SchemeEligibilityController {
         List<SchemeEligibility> c = schemeEligibilityService.readAllSchemeEligibility();
         return c;
     }
-    
+
     @GetMapping("/get-eligibility-by-id/{id}")
-    public List<SchemeEligibility> getSchemeEligibilityBySchemeId(@PathVariable Long schemeId) {
-        List<SchemeEligibility> s = schemeEligibilityService.getSchemeEligibilityById(schemeId);
+    public SchemeEligibility getSchemeEligibilityBySchemeId(@PathVariable Long id) {
+        SchemeEligibility s = schemeEligibilityService.getEligibilityById(id);
         return s;
     }
-    
+
     @GetMapping("/get-scheme-eligibility/{schemeId}")
-    public List<SchemeEligibility> get(@PathVariable Long schemeId){
+    public List<SchemeEligibility> get(@PathVariable Long schemeId) {
         List<SchemeEligibility> s = schemeEligibilityService.getSchemeEligibilityById(schemeId);
         return s;
     }
 
     @PutMapping("/update-scheme-eligibility/{id}")
-    public ResponseEntity<SchemeEligibility> updateSchemeEligibility(@PathVariable Long id, @RequestBody SchemeEligibility schemeEligibility){
+    public ResponseEntity<SchemeEligibility> updateSchemeEligibility(@PathVariable Long id,
+            @RequestBody SchemeEligibility schemeEligibility) {
         return ResponseEntity.ok(schemeEligibilityService.updateSchemeEligibilityById(id, schemeEligibility));
     }
-
 
 }
